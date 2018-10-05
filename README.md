@@ -14,10 +14,10 @@
 #### Python
 
 #### PHP
-- [PHP examples](/php/README.md)
+- [PHP examples](/php)
 
 #### Ruby
-- [Ruby examples](/ruby/README.md)
+- [Ruby examples](/ruby)
 
 ## Pull Requests
 Please use issues section for any suggestions and issues.
