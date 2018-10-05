@@ -13,6 +13,7 @@
 ### main
 - [ ] requests
 - [ ] configparser
+- [ ] json
 ### auth
 - [ ] time
 - [ ] datetime

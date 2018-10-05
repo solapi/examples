@@ -1,10 +1,10 @@
 import requests
 import configparser
 import auth
+import json
 
 config = configparser.ConfigParser()
 config.read('./config.ini')
-print(config['AUTH'])
 apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
@@ -18,4 +18,4 @@ if __name__ == '__main__':
         }
     }
     res = requests.post(config['SERVER']['URI'] + 'send', headers=auth.get_headers(apiKey, apiSecret), json=data)
-    print(res.text)
+    print(json.loads(res.text))
