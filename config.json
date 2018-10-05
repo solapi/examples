@@ -1,0 +1,8 @@
+{
+  "apiKey": "",
+  "apiSecret": "",
+  "to": "",
+  "from": "",
+  "text": "Hello Coolsms",
+  "type": "SMS"
+}
