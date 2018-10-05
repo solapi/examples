@@ -6,14 +6,20 @@ contains the examples of how to use Coolsms messag-v4-api using various programm
 ## Usage
 
 #### JavaScript
+- [SimpleMessage](/javascript/simple_message.js)
+- [GroupMessage](/javascript/group_message.js)
 
 #### Java
 
 #### Python
 
 #### PHP
+- [SimpleMessage](/php/simple_message.js)
+- [GroupMessage](/php/group_message.js)
 
 #### Ruby
+- [SimpleMessage](/ruby/simple_message.js)
+- [GroupMessage](/ruby/group_message.js)
 
 ## Pull Requests
 Please use issues section for any suggestions and issues.
