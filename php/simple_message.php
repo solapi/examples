@@ -12,7 +12,7 @@ $apiSecret = $config["apiSecret"];
 
 date_default_timezone_set('Asia/Seoul');
 $date = date('Y-m-d\TH:i:s.Z\Z', time());  // date must be ISO 8361 format
-$salt = '123abc111dddd'; // Any random strings with [0-9a-zA-Z]
+$salt = uniqid(); // Any random strings with [0-9a-zA-Z]
 $signature = hash_hmac('sha256', $date.$salt, $apiSecret);
 
 $url = "https://rest.coolsms.co.kr/messages/v4/send";

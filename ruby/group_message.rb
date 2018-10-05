@@ -2,6 +2,7 @@ require 'openssl'
 require 'Base64'
 require 'net/http'
 require 'json'
+require 'securerandom'
 
 #
 # coolsms-message-v4 ruby 
@@ -15,7 +16,7 @@ def get_header
     apiKey = $config["apiKey"]
     apiSecret = $config["apiSecret"]
     date = Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z')
-    salt = '123abc111dddd'
+    salt = SecureRandom.hex
     signature = OpenSSL::HMAC.hexdigest('SHA256', apiSecret, date + salt)
     return 'HMAC-SHA256 apiKey=' + apiKey + ', date=' + date + ', salt=' + salt + ', signature=' + signature
 end
