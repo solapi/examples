@@ -13,7 +13,7 @@ function get_header() {
   $apiSecret = $config["apiSecret"];
   date_default_timezone_set('Asia/Seoul');
   $date = date('Y-m-d\TH:i:s.Z\Z', time());
-  $salt = '123abc111dddd';
+  $salt = uniqid();
   $signature = hash_hmac('sha256', $date.$salt, $apiSecret);
   return "Authorization: HMAC-SHA256 apiKey={$apiKey}, date={$date}, salt={$salt}, signature={$signature}";
 }
@@ -79,9 +79,7 @@ function request($method, $url, $data = false) {
 }
 
 $groupId = create_group();
-sleep(1);
 add_message($groupId);
-sleep(1);
 send_message($groupId);
 
 ?>
