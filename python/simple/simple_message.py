@@ -4,7 +4,7 @@ import auth
 import json
 
 config = configparser.ConfigParser()
-config.read('./config.ini')
+config.read('../config.ini')
 apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
