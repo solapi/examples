@@ -12,5 +12,5 @@ if __name__ == '__main__':
     # [INPUT_GROUP_ID] 에 그룹 아이디를 넣어주세요
     # ex) G4V20181005122748TESTTESTTESTTES
     res = requests.delete(config['SERVER']['URI'] + 'groups/[INPUT_GROUP_ID]/schedule',
-                        headers=auth.get_headers(apiKey, apiSecret))
+                          headers=auth.get_headers(apiKey, apiSecret))
     print(json.loads(res.text))
