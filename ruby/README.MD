@@ -1,0 +1,10 @@
+### Ruby examples
+- [send simple message](/send_simple_message.rb)
+- [send group message](/send_group_message.rb)
+- [get group list](/get_group_list.rb)
+- [get group info](/get_group_info.rb)
+- [delete group](/delete_group.rb)
+- [get group messages](/get_group_messages.rb)
+- [delete group messages](/delete_group_messages.rb)
+- [add scheduledDate](/add_scheduledDate.rb)
+- [cancel scheduledDate](/cancel_scheduledDate.rb)
