@@ -17,3 +17,11 @@ def get_iso_datetime():
 
 def get_signature(key, msg):
     return hmac.new(key.encode(), msg.encode(), hashlib.sha256).hexdigest()
+
+
+def get_headers(apiKey, apiSecret):
+    date = get_iso_datetime()
+    salt = unique_id()
+    data = date + salt
+    return {'Authorization': 'HMAC-SHA256 ApiKey=' + apiKey + ', Date=' + date + ', salt=' + salt + ', signature=' +
+                             get_signature(apiSecret, data)}
