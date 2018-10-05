@@ -1,7 +1,7 @@
 <?php
 /*
  coolsms-message-v4 php example
- contains codes how to send msgs using group message API
+ get group list
 */
 $configFile = file_get_contents("./config.json");
 $config = json_decode($configFile, true);
@@ -18,34 +18,12 @@ function get_header() {
   return "Authorization: HMAC-SHA256 apiKey={$apiKey}, date={$date}, salt={$salt}, signature={$signature}";
 }
 
-function create_group() {
+function get_group_list() {
   $url = "https://rest.coolsms.co.kr/messages/v4/groups";
-  $result = request("POST", $url);
-  $groupId = json_decode($result)->groupId;
-  print_r("GroupID : {$groupId}\n");
-  return $groupId;
-}
-
-function add_message($groupId) {
-  global $config;
-  $fields = new stdClass();
-  $message = new stdClass();
-  $message->text = $config["text"] . " from PHP";
-  $message->type = $config["type"];
-  $message->to = $config["to"];
-  $message->from = $config["from"];
-  $fields->messages = json_encode(array($message));
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/messages";
-  // $url = "https://jsonplaceholder.typicode.com/posts/1";
-  $result = request("PUT", $url, $fields);
-  print_r("Group msg add : {$result}\n");
-}
-
-function send_message($groupId) {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/send";
-  // $url = "https://jsonplaceholder.typicode.com/posts";
-  $result = request("POST", $url);
-  print_r("Group msg send : {$result}\n");
+  $data = new stdClass();
+  $data->limit = 2;
+  $result = request("GET", $url, $data);
+  print_r("Group list : {$result}\n");
 }
 
 function request($method, $url, $data = false) {
@@ -55,7 +33,7 @@ function request($method, $url, $data = false) {
     switch ($method) {
       case "POST":
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-        if ($data) curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+        if ($data) curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         break;
       case "PUT":
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -78,8 +56,6 @@ function request($method, $url, $data = false) {
   }
 }
 
-$groupId = create_group();
-add_message($groupId);
-send_message($groupId);
+get_group_list();
 
 ?>

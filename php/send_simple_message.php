@@ -1,7 +1,7 @@
 <?php
 /*
  * coolsms-message-v4 php example
- * contains codes how to send msg using simple message API
+ * send simple messages
  */
 $configFile = file_get_contents("./config.json");
 $config = json_decode($configFile, true);
@@ -23,13 +23,13 @@ $message->type = $config["type"];
 $message->to = $config["to"];
 $message->from = $config["from"];
 $fields->message = $message;
-$fields_string = http_build_query($fields);
+$fields_string = json_encode($fields);
 $header = "Authorization: HMAC-SHA256 apiKey={$apiKey}, date={$date}, salt={$salt}, signature={$signature}";
 
 //open connection
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array($header));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
 curl_setopt($ch, CURLOPT_POST, count($fields));
 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER, true); 

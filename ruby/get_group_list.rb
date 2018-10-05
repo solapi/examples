@@ -6,7 +6,7 @@ require 'securerandom'
 
 #
 # coolsms-message-v4 ruby 
-# contains codes how to send msg using simple message API
+# get group list
 # 
 
 file = File.read './config.json'
@@ -21,27 +21,18 @@ def get_header
     return 'HMAC-SHA256 apiKey=' + apiKey + ', date=' + date + ', salt=' + salt + ', signature=' + signature
 end
 
-def send_sms
+def get_group_list()
     header = get_header
-    puts 'header : ' + header
-    uri = URI('https://rest.coolsms.co.kr/messages/v4/send')
+    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-    req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
+    req = Net::HTTP::Get.new(uri.path, 'Content-Type' => 'application/json')
     req.add_field('Authorization', header)
-    req.body = {
-      message: {
-        text: $config["text"] + " from Ruby",
-        type: $config["type"],
-        to: $config["to"],
-        from: $config["from"]
-      }
-    }.to_json
     res = http.request(req)
-    puts res.body
+    puts "Group List : #{res.body}"
+
 rescue => e
-    puts 'failed'
     puts e
 end
 
-send_sms()
+get_group_list()

@@ -3,10 +3,11 @@ require 'Base64'
 require 'net/http'
 require 'json'
 require 'securerandom'
+require 'date'
 
 #
 # coolsms-message-v4 ruby 
-# contains codes how to send msgs using group message API
+# add scheduledDate
 # 
 
 file = File.read './config.json'
@@ -61,15 +62,20 @@ rescue => e
     puts e
 end
 
-def send_message(groupId)
+def add_scheduledDate(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/send")
+    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/schedule")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
     req.add_field('Authorization', header)
+    date = (Date.today + 1).to_s
+    puts date
+    req.body = {
+      scheduledDate: date
+    }.to_json
     res = http.request(req)
-    puts "Group msg send : #{res.body}"
+    puts "Get Group Info : #{res.body}"
 
 rescue => e
     puts e
@@ -77,4 +83,4 @@ end
 
 groupId = create_group()
 add_message(groupId)
-send_message(groupId)
+add_scheduledDate(groupId)
