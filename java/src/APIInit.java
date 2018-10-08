@@ -53,7 +53,6 @@ class APIInit {
                     .build();
             service = retrofit.create(CoolsmsMsgV4.class);
         }
-
         return service;
     }
 }

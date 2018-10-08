@@ -5,7 +5,6 @@ import retrofit2.Response;
 import java.io.IOException;
 
 public class getGroups {
-
     public static void main(String[] args) {
         Call<ResponseBody> api = APIInit.getAPI().getGroups(APIInit.getHeaders());
         api.enqueue(new Callback<>() {
