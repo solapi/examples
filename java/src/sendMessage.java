@@ -12,15 +12,14 @@ public class sendMessage {
             @Override
             public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {
                 MessageRes body = response.body();
-                System.out.println(response.code());
-                System.out.println(body.getGroupId());
-                System.out.println(body.getMessageId());
-                System.out.println(body.getTo());
-                System.out.println(body.getFrom());
-                System.out.println(body.getType());
-                System.out.println(body.getStatusCode());
-                System.out.println(body.getStatusMessage());
-                System.out.println(body.getCustomFields());
+                System.out.println("groupId : " + body.getGroupId());
+                System.out.println("getMessageId : " + body.getMessageId());
+                System.out.println("to : " + body.getTo());
+                System.out.println("from : " + body.getFrom());
+                System.out.println("type : " + body.getType());
+                System.out.println("statusCode : " + body.getStatusCode());
+                System.out.println("statusMessage : " + body.getStatusMessage());
+                System.out.println("customFields : " + body.getCustomFields());
             }
 
             @Override
