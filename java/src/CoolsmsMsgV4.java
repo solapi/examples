@@ -1,9 +1,14 @@
+import model.request.Message;
+import model.response.MessageRes;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
+import retrofit2.http.*;
 
 public interface CoolsmsMsgV4 {
+    @POST("/messages/v4/send")
+    Call<MessageRes> sendMessage(@Header("Authorization") String auth,
+                                 @Body Message message);
+
     @GET("/messages/v4/groups")
     Call<ResponseBody> getGroups(@Header("Authorization") String auth);
 }
