@@ -61,12 +61,12 @@ rescue => e
     puts e
 end
 
-def get_group_messages(groupId)
+def delete_group_messages(groupId)
     header = get_header
     uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/messages")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-    req = Net::HTTP::Get.new(uri.path, 'Content-Type' => 'application/json')
+    req = Net::HTTP::Delete.new(uri.path, 'Content-Type' => 'application/json')
     req.add_field('Authorization', header)
     res = http.request(req)
     puts "Group msg send : #{res.body}"
@@ -77,4 +77,4 @@ end
 
 groupId = create_group()
 add_message(groupId)
-get_group_messages(groupId)
+delete_group_messages(groupId)
