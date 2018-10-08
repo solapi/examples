@@ -18,5 +18,9 @@ public interface CoolsmsMsgV4 {
 
     @GET("/messages/v4/groups/{groupId}")
     Call<GroupRes> getGroupInfo(@Header("Authorization") String auth,
-                                    @Path("groupId") String groupId);
+                                @Path("groupId") String groupId);
+
+    @DELETE("/messages/v4/groups/{groupId}")
+    Call<GroupRes> deleteGroupInfo(@Header("Authorization") String auth,
+                                @Path("groupId") String groupId);
 }
