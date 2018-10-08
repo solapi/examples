@@ -1,7 +1,7 @@
 import model.request.Message;
+import model.response.GroupListRes;
 import model.response.GroupRes;
 import model.response.MessageRes;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -14,5 +14,5 @@ public interface CoolsmsMsgV4 {
     Call<GroupRes> createGroup(@Header("Authorization") String auth);
 
     @GET("/messages/v4/groups")
-    Call<ResponseBody> getGroups(@Header("Authorization") String auth);
+    Call<GroupListRes> getGroups(@Header("Authorization") String auth);
 }
