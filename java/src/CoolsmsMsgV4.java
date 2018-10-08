@@ -15,4 +15,8 @@ public interface CoolsmsMsgV4 {
 
     @GET("/messages/v4/groups")
     Call<GroupListRes> getGroups(@Header("Authorization") String auth);
+
+    @GET("/messages/v4/groups/{groupId}")
+    Call<GroupRes> getGroupInfo(@Header("Authorization") String auth,
+                                    @Path("groupId") String groupId);
 }
