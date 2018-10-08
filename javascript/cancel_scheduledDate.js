@@ -1,9 +1,10 @@
+const moment = require('moment-timezone')
 const { config, Group } = require('coolsms-sdk-v4')
 const conf = require('../config')
 
 /*
  coolsms-message-v4 js example
- send group messages
+ cancel scheduledDate
 */
 
 config.init({
@@ -21,7 +22,9 @@ async function send (message) {
     const group = new Group()
     await group.createGroup()
     await group.addGroupMessage(message)
-    await group.sendMessages()
+    const scheduledDate = moment().tz('Asia/Seoul').add(1, 'days').format('YYYY-MM-DD H:m:s')
+    await group.setScheduledDate(scheduledDate)
+    await group.cancelScheduled()
   } catch (e) {
     console.log(e)
   }

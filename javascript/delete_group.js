@@ -3,22 +3,20 @@ const conf = require('../config')
 
 /*
  coolsms-message-v4 js example
- send simple messages
+ delete group
 */
 
 config.init({
   apiKey: conf.apiKey,
   apiSecret: conf.apiSecret
 })
-send({
-  text: `${conf.text} from JavaScript`,
-  type: conf.type,
-  to: conf.to,
-  from: conf.from
-})
-async function send (message, agent = {}) {
+deleteGroup()
+async function deleteGroup () {
   try {
-    console.log(await Group.sendSimpleMessage(message, agent))
+    const group = new Group()
+    await group.createGroup()
+    const groupId = group.getGroupId()
+    await Group.deleteGroup(groupId)
   } catch (e) {
     console.log(e)
   }
