@@ -5,7 +5,7 @@ import retrofit2.Response;
 
 public class getMessageGroupInfo {
     public static void main(String[] args) {
-        Call<GroupRes> api = APIInit.getAPI().getGroupInfo(APIInit.getHeaders(), "G4V20181008113301PCZ5YXFUWO9LKOF");
+        Call<GroupRes> api = APIInit.getAPI().getGroupInfo(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
         getGroupInfo(api);
     }
 

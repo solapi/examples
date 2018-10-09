@@ -4,6 +4,7 @@ import model.response.GroupListRes;
 import model.response.GroupRes;
 import model.response.MessageListRes;
 import model.response.MessageRes;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -30,4 +31,8 @@ public interface CoolsmsMsgV4 {
     Call<MessageListRes> addGroupMessage(@Header("Authorization") String auth,
                                          @Path("groupId") String groupId,
                                          @Body MessageList messages);
+
+    @POST("/messages/v4/groups/{groupId}/send")
+    Call<ResponseBody> sendGroupMessage(@Header("Authorization") String auth,
+                                        @Path("groupId") String groupId);
 }

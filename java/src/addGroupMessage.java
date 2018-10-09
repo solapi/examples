@@ -19,7 +19,7 @@ public class addGroupMessage {
         Gson gson = new Gson();
         String jsonString = gson.toJson(jsonObjects);
         System.out.println(jsonString);
-        Call<MessageListRes> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181008155155MFT8NFFNQLI16TV", new MessageList(jsonString));
+        Call<MessageListRes> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC", new MessageList(jsonString));
         api.enqueue(new Callback<MessageListRes>() {
             @Override
             public void onResponse(Call<MessageListRes> call, Response<MessageListRes> response) {
