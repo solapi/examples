@@ -6,7 +6,7 @@ import retrofit2.Response;
 
 import java.util.Map;
 
-public class getGroups {
+public class GetGroups {
     public static void main(String[] args) {
         Call<GroupListRes> api = APIInit.getAPI().getGroups(APIInit.getHeaders());
         api.enqueue(new Callback<>() {

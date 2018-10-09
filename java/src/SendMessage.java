@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class sendMessage {
+public class SendMessage {
     public static void main(String[] args) {
         Message message =  new Message("01029951047", "01029951047", "test");
         Call<MessageRes> api = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);

@@ -3,7 +3,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class getMessageGroupInfo {
+public class GetMessageGroupInfo {
     public static void main(String[] args) {
         Call<GroupRes> api = APIInit.getAPI().getGroupInfo(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
         getGroupInfo(api);

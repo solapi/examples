@@ -8,7 +8,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import java.util.ArrayList;
 
-public class addGroupMessage {
+public class AddGroupMessage {
     public static void main(String[] args) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("to", "01029951047");
