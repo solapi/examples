@@ -1,6 +1,8 @@
 import model.request.Message;
+import model.request.MessageList;
 import model.response.GroupListRes;
 import model.response.GroupRes;
+import model.response.MessageListRes;
 import model.response.MessageRes;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -22,5 +24,10 @@ public interface CoolsmsMsgV4 {
 
     @DELETE("/messages/v4/groups/{groupId}")
     Call<GroupRes> deleteGroupInfo(@Header("Authorization") String auth,
-                                @Path("groupId") String groupId);
+                                   @Path("groupId") String groupId);
+
+    @PUT("/messages/v4/groups/{groupId}/messages")
+    Call<MessageListRes> addGroupMessage(@Header("Authorization") String auth,
+                                         @Path("groupId") String groupId,
+                                         @Body MessageList messages);
 }

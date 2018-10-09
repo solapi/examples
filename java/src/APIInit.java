@@ -4,6 +4,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.ini4j.Ini;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -50,6 +51,7 @@ class APIInit {
                     .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl("https://rest.coolsms.co.kr/")
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();

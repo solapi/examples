@@ -9,6 +9,16 @@ public class MessageRes {
     private String type;
     private String from;
     private String customFields;
+    private String country;
+    private String accountId;
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
 
     public String getStatusCode() {
         return statusCode;
