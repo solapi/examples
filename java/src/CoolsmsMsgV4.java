@@ -1,5 +1,6 @@
 import model.request.Message;
 import model.request.MessageList;
+import model.request.ScheduleDate;
 import model.response.GroupListRes;
 import model.response.GroupRes;
 import model.response.MessageListRes;
@@ -35,4 +36,9 @@ public interface CoolsmsMsgV4 {
     @POST("/messages/v4/groups/{groupId}/send")
     Call<ResponseBody> sendGroupMessage(@Header("Authorization") String auth,
                                         @Path("groupId") String groupId);
+
+    @POST("/messages/v4/groups/{groupId}/schedule")
+    Call<ResponseBody> scheduleGroupMessage(@Header("Authorization") String auth,
+                                            @Path("groupId") String groupId,
+                                            @Body ScheduleDate scheduleDate);
 }

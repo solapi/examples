@@ -11,6 +11,7 @@ public class SendGroupMessage {
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                System.out.println(response.code());
                 try {
                     // 성공 시 "Success" 가 출력됩니다.
                     System.out.println(response.body().string());
