@@ -5,7 +5,7 @@ import retrofit2.Response;
 
 public class CancelScheduledGroupMessage {
     public static void main(String[] args) {
-        Call<ResponseBody> api = APIInit.getAPI().cancelScheduledGroupMessage(APIInit.getHeaders(), "G4V20181010090731TRWHZ2WNIF9LJI3");
+        Call<ResponseBody> api = APIInit.getAPI().cancelScheduledGroupMessage(APIInit.getHeaders(), "[Group ID를 입력하세요]");
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
