@@ -1,10 +1,8 @@
+import model.request.MessageIds;
 import model.request.Message;
 import model.request.MessageList;
 import model.request.ScheduleDate;
-import model.response.GroupListRes;
-import model.response.GroupRes;
-import model.response.MessageListRes;
-import model.response.MessageRes;
+import model.response.*;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -44,5 +42,10 @@ public interface CoolsmsMsgV4 {
 
     @DELETE("/messages/v4/groups/{groupId}/schedule")
     Call<ResponseBody> cancelScheduledGroupMessage(@Header("Authorization") String auth,
-                                            @Path("groupId") String groupId);
+                                                   @Path("groupId") String groupId);
+
+    @HTTP(method = "DELETE", path = "/messages/v4/groups/{groupId}/messages", hasBody = true)
+    Call<DeleteGroupRes> deleteGroupMessages(@Header("Authorization") String auth,
+                                             @Path("groupId") String groupId,
+                                             @Body MessageIds messageIds);
 }
