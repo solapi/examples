@@ -10,7 +10,7 @@
 - [ ] 각 Example 사용 시 필요한 정보 (Message ID, Group ID, to, from, text 등) 입력
 
 ## 필요한 Library
-### /lib/*
+### [/lib/*](https://github.com/KimGenius/coolsms-v4-examples/tree/java/java/lib)
 - [ ] commons-codec-1.9
 - [ ] converter-gson-2.4.0
 - [ ] converter-scalars-2.4.0
