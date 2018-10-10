@@ -12,6 +12,7 @@ public class GetGroups {
         api.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<GroupListModel> call, Response<GroupListModel> response) {
+                System.out.println(response.code());
                 GroupListModel body = response.body();
                 Map<String, GroupModel> groupList = body.getGroupList();
                 for (String key : groupList.keySet()) {
