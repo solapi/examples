@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-public class GroupListRes {
+public class GroupListModel {
     public Map<String, GroupModel> getGroupList() {
         Gson gson = new Gson();
         Type mapType = new TypeToken<Map<String, GroupModel>>() {}.getType();

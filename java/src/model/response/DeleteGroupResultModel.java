@@ -1,6 +1,6 @@
 package model.response;
 
-public class DeleteGroupResult {
+public class DeleteGroupResultModel {
     private String messageId;
     private String resultCode;
 

@@ -2,7 +2,7 @@ package model.response;
 
 import java.util.ArrayList;
 
-public class AddMessageListRes {
+public class AddMessageListModel {
     private int errorCount = 0;
     private ArrayList<MessageModel> resultList;
 

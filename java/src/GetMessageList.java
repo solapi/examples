@@ -1,6 +1,6 @@
 import com.google.gson.Gson;
-import model.response.AddMessageRes;
-import model.response.GetMessageListRes;
+import model.response.AddMessageModel;
+import model.response.GetMessageListModel;
 import model.response.LogModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -9,15 +9,15 @@ import retrofit2.Response;
 public class GetMessageList {
     public static void main(String[] args) {
         Gson gson = new Gson();
-        Call<GetMessageListRes> api = APIInit.getAPI().getMessageList(APIInit.getHeaders());
-        api.enqueue(new Callback<GetMessageListRes>() {
+        Call<GetMessageListModel> api = APIInit.getAPI().getMessageList(APIInit.getHeaders());
+        api.enqueue(new Callback<GetMessageListModel>() {
             @Override
-            public void onResponse(Call<GetMessageListRes> call, Response<GetMessageListRes> response) {
-                GetMessageListRes body = response.body();
+            public void onResponse(Call<GetMessageListModel> call, Response<GetMessageListModel> response) {
+                GetMessageListModel body = response.body();
                 System.out.println("offset : " + body.getOffset());
                 System.out.println("limit : " + body.getLimit());
                 for (String key : body.getMessageList().keySet()) {
-                    AddMessageRes messageRes = gson.fromJson(body.getMessageList().get(key), AddMessageRes.class);
+                    AddMessageModel messageRes = gson.fromJson(body.getMessageList().get(key), AddMessageModel.class);
                     System.out.println("_id : " + messageRes.getMessageId());
                     System.out.println("kakaoOptions : " + messageRes.getMessageId());
                     System.out.println("type : " + messageRes.getType());
@@ -50,7 +50,7 @@ public class GetMessageList {
             }
 
             @Override
-            public void onFailure(Call<GetMessageListRes> call, Throwable throwable) {
+            public void onFailure(Call<GetMessageListModel> call, Throwable throwable) {
                 throwable.printStackTrace();
             }
         });

@@ -1,4 +1,4 @@
-import model.response.GroupListRes;
+import model.response.GroupListModel;
 import model.response.GroupModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -8,11 +8,11 @@ import java.util.Map;
 
 public class GetGroups {
     public static void main(String[] args) {
-        Call<GroupListRes> api = APIInit.getAPI().getGroups(APIInit.getHeaders());
+        Call<GroupListModel> api = APIInit.getAPI().getGroups(APIInit.getHeaders());
         api.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<GroupListRes> call, Response<GroupListRes> response) {
-                GroupListRes body = response.body();
+            public void onResponse(Call<GroupListModel> call, Response<GroupListModel> response) {
+                GroupListModel body = response.body();
                 Map<String, GroupModel> groupList = body.getGroupList();
                 for (String key : groupList.keySet()) {
                     GroupModel group = groupList.get(key);
@@ -34,7 +34,7 @@ public class GetGroups {
             }
 
             @Override
-            public void onFailure(Call<GroupListRes> call, Throwable throwable) {
+            public void onFailure(Call<GroupListModel> call, Throwable throwable) {
                 throwable.printStackTrace();
             }
         });

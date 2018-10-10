@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-public class AddMessageRes {
+public class AddMessageModel {
     private String _id;
     private JsonObject kakaoOptions;
     private String type;

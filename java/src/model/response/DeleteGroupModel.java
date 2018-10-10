@@ -2,10 +2,10 @@ package model.response;
 
 import java.util.ArrayList;
 
-public class DeleteGroupRes {
+public class DeleteGroupModel {
     private String groupId;
     private int errorCount;
-    private ArrayList<DeleteGroupResult> resultList;
+    private ArrayList<DeleteGroupResultModel> resultList;
 
     public String getGroupId() {
         return groupId;
@@ -15,7 +15,7 @@ public class DeleteGroupRes {
         return errorCount;
     }
 
-    public ArrayList<DeleteGroupResult> getResultList() {
+    public ArrayList<DeleteGroupResultModel> getResultList() {
         return resultList;
     }
 }

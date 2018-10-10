@@ -1,7 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import model.request.MessageList;
-import model.response.AddMessageListRes;
+import model.response.AddMessageListModel;
 import model.response.MessageModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,11 +19,11 @@ public class AddGroupMessage {
         Gson gson = new Gson();
         String jsonString = gson.toJson(jsonObjects);
 
-        Call<AddMessageListRes> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010104753WODJ8GIAFYJ93GH", new MessageList(jsonString));
-        api.enqueue(new Callback<AddMessageListRes>() {
+        Call<AddMessageListModel> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010104753WODJ8GIAFYJ93GH", new MessageList(jsonString));
+        api.enqueue(new Callback<AddMessageListModel>() {
             @Override
-            public void onResponse(Call<AddMessageListRes> call, Response<AddMessageListRes> response) {
-                AddMessageListRes body = response.body();
+            public void onResponse(Call<AddMessageListModel> call, Response<AddMessageListModel> response) {
+                AddMessageListModel body = response.body();
                 System.out.println("errorCount : " + body.getErrorCount());
                 for (MessageModel message : body.getResultList()) {
                     System.out.println("groupId : " + message.getGroupId());
@@ -40,7 +40,7 @@ public class AddGroupMessage {
             }
 
             @Override
-            public void onFailure(Call<AddMessageListRes> call, Throwable throwable) {
+            public void onFailure(Call<AddMessageListModel> call, Throwable throwable) {
                 throwable.printStackTrace();
             }
         });

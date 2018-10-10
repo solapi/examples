@@ -2,7 +2,7 @@ package model.response;
 
 import com.google.gson.JsonObject;
 
-public class GetMessageListRes {
+public class GetMessageListModel {
     private int offset = 0;
     private int limit = 0;
     private JsonObject messageList;
