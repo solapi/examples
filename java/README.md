@@ -3,7 +3,7 @@
 [![Java 9.0](https://img.shields.io/badge/Java-v9.0-red.svg)](https://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)
 
 ## 사용 준비
-- [ ] config.ini에 정보 입력
+- [ ] [config.ini](https://github.com/KimGenius/coolsms-v4-examples/blob/java/java/src/config.ini)에 정보 입력
   - [ ] ApiKey
   - [ ] ApiSecret
 
