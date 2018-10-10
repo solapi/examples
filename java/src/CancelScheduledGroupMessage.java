@@ -3,22 +3,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.io.IOException;
-
-public class SendGroupMessage {
+public class CancelScheduledGroupMessage {
     public static void main(String[] args) {
-        Call<ResponseBody> api = APIInit.getAPI().sendGroupMessage(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
+        Call<ResponseBody> api = APIInit.getAPI().cancelScheduledGroupMessage(APIInit.getHeaders(), "G4V20181010090731TRWHZ2WNIF9LJI3");
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 // 성공시 200이 출력됩니다.
                 System.out.println(response.code());
-                try {
-                    // 성공 시 "Success" 가 출력됩니다.
-                    System.out.println(response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
             @Override

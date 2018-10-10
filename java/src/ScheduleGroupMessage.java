@@ -26,6 +26,7 @@ public class ScheduleGroupMessage {
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                // 성공시 200이 출력됩니다.
                 System.out.println(response.code());
                 try {
                     // 성공 시 "Success" 가 출력됩니다.

@@ -41,4 +41,8 @@ public interface CoolsmsMsgV4 {
     Call<ResponseBody> scheduleGroupMessage(@Header("Authorization") String auth,
                                             @Path("groupId") String groupId,
                                             @Body ScheduleDate scheduleDate);
+
+    @DELETE("/messages/v4/groups/{groupId}/schedule")
+    Call<ResponseBody> cancelScheduledGroupMessage(@Header("Authorization") String auth,
+                                            @Path("groupId") String groupId);
 }
