@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class SendGroupMessage {
     public static void main(String[] args) {
-        Call<ResponseBody> api = APIInit.getAPI().sendGroupMessage(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
+        Call<ResponseBody> api = APIInit.getAPI().sendGroupMessage(APIInit.getHeaders(), "[Group ID를 입력하세요]");
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
