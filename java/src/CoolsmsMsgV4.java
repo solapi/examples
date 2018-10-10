@@ -8,6 +8,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+// 문서 : https://docs.coolsms.co.kr/rest-api-reference/message-api-v4
+// 일부 API는 Query Parameter를 추가로 사용할 수 있습니다.
 public interface CoolsmsMsgV4 {
     // 심플 메시지
     @POST("/messages/v4/send")
