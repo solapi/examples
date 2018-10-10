@@ -8,9 +8,9 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 public class GroupListRes {
-    public Map<String, GroupRes> getGroupList() {
+    public Map<String, GroupModel> getGroupList() {
         Gson gson = new Gson();
-        Type mapType = new TypeToken<Map<String, GroupRes>>() {}.getType();
+        Type mapType = new TypeToken<Map<String, GroupModel>>() {}.getType();
         return gson.fromJson(groupList, mapType);
     }
 

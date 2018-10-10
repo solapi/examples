@@ -1,5 +1,5 @@
 import model.request.Message;
-import model.response.MessageRes;
+import model.response.MessageModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -7,11 +7,11 @@ import retrofit2.Response;
 public class SendMessage {
     public static void main(String[] args) {
         Message message =  new Message("01029951047", "01029951047", "test");
-        Call<MessageRes> api = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
+        Call<MessageModel> api = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
         api.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {
-                MessageRes body = response.body();
+            public void onResponse(Call<MessageModel> call, Response<MessageModel> response) {
+                MessageModel body = response.body();
                 System.out.println("groupId : " + body.getGroupId());
                 System.out.println("getMessageId : " + body.getMessageId());
                 System.out.println("to : " + body.getTo());
@@ -23,7 +23,7 @@ public class SendMessage {
             }
 
             @Override
-            public void onFailure(Call<MessageRes> call, Throwable throwable) {
+            public void onFailure(Call<MessageModel> call, Throwable throwable) {
                 throwable.printStackTrace();
             }
         });

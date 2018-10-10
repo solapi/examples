@@ -1,6 +1,6 @@
 package model.response;
 
-public class MessageRes {
+public class MessageModel {
     private String groupId;
     private String messageId;
     private String statusCode;

@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-public class GroupRes {
+public class GroupModel {
     private ArrayList<JsonObject> log;
     private JsonObject agent;
     private JsonObject count;

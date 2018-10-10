@@ -1,5 +1,5 @@
 import model.response.GroupListRes;
-import model.response.GroupRes;
+import model.response.GroupModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,9 +13,9 @@ public class GetGroups {
             @Override
             public void onResponse(Call<GroupListRes> call, Response<GroupListRes> response) {
                 GroupListRes body = response.body();
-                Map<String, GroupRes> groupList = body.getGroupList();
+                Map<String, GroupModel> groupList = body.getGroupList();
                 for (String key : groupList.keySet()) {
-                    GroupRes group = groupList.get(key);
+                    GroupModel group = groupList.get(key);
                     System.out.println("log : " + group.getLog());
                     System.out.println("agent : " + group.getAgent());
                     System.out.println("count : " + group.getCount());

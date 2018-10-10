@@ -1,19 +1,19 @@
-import model.response.GroupRes;
+import model.response.GroupModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GetMessageGroupInfo {
     public static void main(String[] args) {
-        Call<GroupRes> api = APIInit.getAPI().getGroupInfo(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
+        Call<GroupModel> api = APIInit.getAPI().getGroupInfo(APIInit.getHeaders(), "G4V20181010084150DSG0DUFFGYH3ODC");
         getGroupInfo(api);
     }
 
-    static void getGroupInfo(Call<GroupRes> api) {
-        api.enqueue(new Callback<GroupRes>() {
+    static void getGroupInfo(Call<GroupModel> api) {
+        api.enqueue(new Callback<GroupModel>() {
             @Override
-            public void onResponse(Call<GroupRes> call, Response<GroupRes> response) {
-                GroupRes body = response.body();
+            public void onResponse(Call<GroupModel> call, Response<GroupModel> response) {
+                GroupModel body = response.body();
                 System.out.println("agent : " + body.getAgent());
                 System.out.println("count : " + body.getCount());
                 System.out.println("log : " + body.getLog());
@@ -28,7 +28,7 @@ public class GetMessageGroupInfo {
             }
 
             @Override
-            public void onFailure(Call<GroupRes> call, Throwable throwable) {
+            public void onFailure(Call<GroupModel> call, Throwable throwable) {
                 throwable.printStackTrace();
             }
         });
