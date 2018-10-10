@@ -13,8 +13,8 @@ import java.util.TimeZone;
 
 public class ScheduleGroupMessage {
     public static void main(String[] args) throws ParseException {
-        // 전송하실 일시를 입력하세요.
-        String dateString = "2018-11-18 11:11:11";
+        // 전송하실 일시를 입력하세요. ex) 2018-10-10 14:39:03
+        String dateString = "[전송하실 일시를 입력하세요]";
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
 
         TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -22,7 +22,7 @@ public class ScheduleGroupMessage {
         df.setTimeZone(tz);
         String nowAsISO = df.format(date);
 
-        Call<ResponseBody> api = APIInit.getAPI().scheduleGroupMessage(APIInit.getHeaders(), "G4V20181010090731TRWHZ2WNIF9LJI3", new ScheduleDate(nowAsISO));
+        Call<ResponseBody> api = APIInit.getAPI().scheduleGroupMessage(APIInit.getHeaders(), "[Group ID를 입력하세요]", new ScheduleDate(nowAsISO));
         api.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
