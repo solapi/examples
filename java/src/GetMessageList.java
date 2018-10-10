@@ -13,6 +13,7 @@ public class GetMessageList {
         api.enqueue(new Callback<GetMessageListModel>() {
             @Override
             public void onResponse(Call<GetMessageListModel> call, Response<GetMessageListModel> response) {
+                System.out.println(response.code());
                 GetMessageListModel body = response.body();
                 System.out.println("offset : " + body.getOffset());
                 System.out.println("limit : " + body.getLimit());
