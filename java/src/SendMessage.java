@@ -6,7 +6,7 @@ import retrofit2.Response;
 
 public class SendMessage {
     public static void main(String[] args) {
-        Message message =  new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[수신번호를 입력하세요]");
+        Message message =  new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]");
         Call<MessageModel> api = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
         api.enqueue(new Callback<>() {
             @Override

@@ -11,18 +11,19 @@ import java.util.ArrayList;
 public class AddGroupMessage {
     public static void main(String[] args) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("to", "01029951047");
-        jsonObject.addProperty("from", "01029951047");
-        jsonObject.addProperty("text", "01029951047");
+        jsonObject.addProperty("to", "[수신번호를 입력하세요]");
+        jsonObject.addProperty("from", "[발신번호를 입력하세요]");
+        jsonObject.addProperty("text", "[전송할 문자를 입력하세요]");
         ArrayList<JsonObject> jsonObjects = new ArrayList<>();
         jsonObjects.add(jsonObject);
         Gson gson = new Gson();
         String jsonString = gson.toJson(jsonObjects);
 
-        Call<AddMessageListModel> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010104753WODJ8GIAFYJ93GH", new MessageList(jsonString));
+        Call<AddMessageListModel> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "[Group ID를 입력하세요]", new MessageList(jsonString));
         api.enqueue(new Callback<AddMessageListModel>() {
             @Override
             public void onResponse(Call<AddMessageListModel> call, Response<AddMessageListModel> response) {
+                System.out.println(response.code());
                 AddMessageListModel body = response.body();
                 System.out.println("errorCount : " + body.getErrorCount());
                 for (MessageModel message : body.getResultList()) {
