@@ -19,7 +19,7 @@ public class AddGroupMessage {
         Gson gson = new Gson();
         String jsonString = gson.toJson(jsonObjects);
 
-        Call<MessageListRes> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010090731TRWHZ2WNIF9LJI3", new MessageList(jsonString));
+        Call<MessageListRes> api = APIInit.getAPI().addGroupMessage(APIInit.getHeaders(), "G4V20181010104753WODJ8GIAFYJ93GH", new MessageList(jsonString));
         api.enqueue(new Callback<MessageListRes>() {
             @Override
             public void onResponse(Call<MessageListRes> call, Response<MessageListRes> response) {
@@ -27,7 +27,7 @@ public class AddGroupMessage {
                 System.out.println("errorCount : " + body.getErrorCount());
                 for (MessageRes message : body.getResultList()) {
                     System.out.println("groupId : " + message.getGroupId());
-                    System.out.println("getMessageId : " + message.getMessageId());
+                    System.out.println("messageId : " + message.getMessageId());
                     System.out.println("to : " + message.getTo());
                     System.out.println("from : " + message.getFrom());
                     System.out.println("type : " + message.getType());
