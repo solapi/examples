@@ -1,0 +1,13 @@
+npm-debug.log
+.DS_Store
+node_modules/
+.vscode/
+public/
+config-dev.json
+log.txt
+out/
+*.swp
+.idea/
+package-lock.json
+/config.json
+/config.json.bak
