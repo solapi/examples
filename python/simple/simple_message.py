@@ -24,4 +24,4 @@ if __name__ == '__main__':
         }
     }
     res = requests.post(config['SERVER']['URI'] + 'send', headers=auth.get_headers(apiKey, apiSecret), json=data)
-    print(json.loads(res.text))
+    print(json.dumps(json.loads(res.text), indent=2))
