@@ -20,4 +20,4 @@ if __name__ == '__main__':
     # ex) G4V20181005122748TESTTESTTESTTES
     res = requests.get(config['SERVER']['URI'] + 'groups/[INPUT_GROUP_ID]',
                        headers=auth.get_headers(apiKey, apiSecret))
-    print(json.dumps(json.loads(res.text), indent=2))
+    print(json.dumps(json.loads(res.text), indent=2, ensure_ascii=False))

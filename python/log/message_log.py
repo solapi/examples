@@ -17,4 +17,4 @@ apiSecret = config['AUTH']['ApiSecret']
 if __name__ == '__main__':
     res = requests.get(config['SERVER']['URI'] + 'list',
                        headers=auth.get_headers(apiKey, apiSecret))
-    print(json.dumps(json.loads(res.text), indent=2))
+    print(json.dumps(json.loads(res.text), indent=2, ensure_ascii=False))
