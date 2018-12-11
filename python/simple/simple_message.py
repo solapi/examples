@@ -1,7 +1,13 @@
 import requests
 import configparser
-import auth
 import json
+import sys
+import os.path
+
+libdir = os.path.dirname(__file__)
+sys.path.append(os.path.split(libdir)[0])
+
+from auth import auth
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
