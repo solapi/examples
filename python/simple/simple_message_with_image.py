@@ -16,11 +16,13 @@ apiSecret = config['AUTH']['ApiSecret']
 
 
 if __name__ == '__main__':
+    # [IMAGE_ID] 에 이미지 아이디를 넣어주세요
     data = {
         'message': {
             'to': config['VALUE']['to'],
             'from': config['VALUE']['from'],
-            'text': 'test'
+            'text': 'test',
+            'imageId': '[IMAGE_ID]'
         }
     }
     res = requests.post(config['SERVER']['URI'] + 'send', headers=auth.get_headers(apiKey, apiSecret), json=data)
