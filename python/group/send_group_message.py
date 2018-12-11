@@ -1,7 +1,13 @@
 import requests
 import configparser
-import auth
 import json
+import sys
+import os.path
+
+libdir = os.path.dirname(__file__)
+sys.path.append(os.path.split(libdir)[0])
+
+from auth import auth
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
@@ -13,4 +19,4 @@ if __name__ == '__main__':
     # ex) G4V20181005122748TESTTESTTESTTES
     res = requests.post(config['SERVER']['URI'] + 'groups/[INPUT_GROUP_ID]/send',
                         headers=auth.get_headers(apiKey, apiSecret))
-    print(json.loads(res.text))
+    print(json.dumps(json.loads(res.text), indent=2))
