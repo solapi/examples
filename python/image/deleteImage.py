@@ -16,6 +16,6 @@ apiSecret = config['AUTH']['ApiSecret']
 
 if __name__ == '__main__':
     # [IMAGE_ID] 에 이미지 아이디를 넣어주세요
-    res = requests.get(config['SERVER']['IMGURI'] + '/images/[IMAGE_ID]',
+    res = requests.delete(config['SERVER']['IMGURI'] + '/images/[IMAGE_ID]',
                         headers=auth.get_headers(apiKey, apiSecret))
     print(json.dumps(json.loads(res.text), indent=2, ensure_ascii=False))
