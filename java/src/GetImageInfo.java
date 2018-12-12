@@ -5,7 +5,7 @@ import retrofit2.Response;
 
 public class GetImageInfo {
     public static void main(String[] args) {
-        Call<ImageInfoResult> api = APIInit.getImageAPI().getImageInfo(APIInit.getHeaders(), "M4V20181212013138HBBEMVUQZIKU0UE");
+        Call<ImageInfoResult> api = APIInit.getImageAPI().getImageInfo(APIInit.getHeaders(), "[IMAGE_ID를 입력하세요]");
         api.enqueue(new Callback<ImageInfoResult>() {
             @Override
             public void onResponse(Call<ImageInfoResult> call, Response<ImageInfoResult> response) {
