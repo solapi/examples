@@ -15,18 +15,4 @@ public class ImageInfoResult {
     public long getFileSize() {
         return file.getSize();
     }
-
-}
-
-class File {
-    String name;
-    long size;
-
-    public long getSize() {
-        return size;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
