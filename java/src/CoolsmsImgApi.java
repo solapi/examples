@@ -20,4 +20,9 @@ public interface CoolsmsImgApi {
     // 이미지 리스트 가져오기
     @GET("/images/v4/images")
     Call<ArrayList<ImageListItem>> getImageList(@Header("Authorization") String auth);
+
+    // 이미지 삭제
+    @DELETE("/images/v4/images/{imageId}")
+    Call<DeleteImageResult> deleteImageInfo(@Header("Authorization") String auth,
+                                       @Path("imageId") String imageId);
 }
