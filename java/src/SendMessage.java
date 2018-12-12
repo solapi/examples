@@ -6,9 +6,9 @@ import retrofit2.Response;
 
 public class SendMessage {
     public static void main(String[] args) {
-        Message message =  new Message("01029951047", "01029951047", "[전송할 문자를 입력하세요]");
+        Message message =  new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]");
 //        MMS 전송 시 위의 코드를 제거 또는 주석 처리 후 아래의 코드를 사용하세요
-//        Message message =  new Message("01029951047", "01029951047", "[전송할 문자를 입력하세요]", "[IMAGE_ID를 입력하세요]");
+//        Message message =  new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]", "[IMAGE_ID를 입력하세요]");
         Call<MessageModel> api = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
         api.enqueue(new Callback<>() {
             @Override
