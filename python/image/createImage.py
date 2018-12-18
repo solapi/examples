@@ -16,6 +16,8 @@ apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
 if __name__ == '__main__':
+    # 이미지를 바꾸시려면 testImage.jpg 대신
+    # 사용하실 이미지가 있는 파일 경로를 넣어주세요
     with open('testImage.jpg', "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
     data = {
