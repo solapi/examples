@@ -1,4 +1,4 @@
-import model.request.Image;
+import model.request.ImageModel;
 import model.response.ImageResult;
 import org.apache.commons.codec.binary.Base64;
 import retrofit2.Call;
@@ -23,13 +23,17 @@ public class CreateImages {
             e.printStackTrace();
         }
         String result = new String(Base64.encodeBase64(imageByte));
-        Call<ImageResult> api = APIInit.getImageAPI().createImage(APIInit.getHeaders(), new Image(result));
+        Call<ImageResult> api = APIInit.getImageAPI().createImage(APIInit.getHeaders(), new ImageModel(result));
         api.enqueue(new Callback<ImageResult>() {
             @Override
             public void onResponse(Call<ImageResult> call, Response<ImageResult> response) {
                 System.out.println(response.code());
                 // 성공시에 M4V로 시작하는 imageId가 넘어옵니다.
-                System.out.println("imageId : " + (response.body() != null ? response.body().getImageId() : null));
+                if (response.isSuccessful()) {
+                    System.out.println("imageId: " + response.body().getImageId());
+                } else {
+                    System.out.println(response.code());
+                }
             }
 
             @Override

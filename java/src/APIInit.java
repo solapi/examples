@@ -42,7 +42,7 @@ class APIInit {
     }
 
     static CoolsmsMsgV4 getAPI() {
-        if (retrofit == null) {
+        if (messageService == null) {
             setRetrofit();
             messageService = retrofit.create(CoolsmsMsgV4.class);
         }
@@ -50,7 +50,7 @@ class APIInit {
     }
 
     static CoolsmsImgApi getImageAPI() {
-        if (retrofit == null) {
+        if (imageService == null) {
             setRetrofit();
             imageService = retrofit.create(CoolsmsImgApi.class);
         }
@@ -59,9 +59,9 @@ class APIInit {
 
     static void setRetrofit() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//            Request 시 로그가 필요하면 추가하세요.
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        Request 시 로그가 필요하면 추가하세요.
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .build();

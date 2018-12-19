@@ -10,7 +10,7 @@ public interface CoolsmsImgApi {
     // 이미지 등록
     @POST("/images/v4/images")
     Call<ImageResult> createImage(@Header("Authorization") String auth,
-                                  @Body Image image);
+                                  @Body ImageModel image);
 
     // 이미지 정보 가져오기
     @GET("/images/v4/images/{imageId}")
