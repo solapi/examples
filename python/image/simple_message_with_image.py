@@ -3,6 +3,7 @@ import configparser
 import json
 import sys
 import os.path
+import image
 
 libdir = os.path.dirname(__file__)
 sys.path.append(os.path.split(libdir)[0])
@@ -14,15 +15,17 @@ config.read('../config.ini')
 apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
-
 if __name__ == '__main__':
-    # [IMAGE_ID] 에 이미지 아이디를 넣어주세요
+    # 이미지를 바꾸시려면 testImage.jpg 대신
+    # 사용하실 이미지가 있는 파일 경로를 넣어주세요
+    imageInfo = json.loads(image.createImage('testImage.jpg', config['SERVER']['IMGURI'],
+                                             auth.get_headers(apiKey, apiSecret)).text)
     data = {
         'message': {
             'to': config['VALUE']['to'],
             'from': config['VALUE']['from'],
             'text': 'test',
-            'imageId': '[IMAGE_ID]'
+            'imageId': imageInfo['imageId']
         }
     }
     res = requests.post(config['SERVER']['URI'] + 'send', headers=auth.get_headers(apiKey, apiSecret), json=data)
