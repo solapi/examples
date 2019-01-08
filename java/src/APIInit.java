@@ -19,7 +19,8 @@ import java.util.UUID;
 
 class APIInit {
     private static Retrofit retrofit;
-    private static CoolsmsMsgV4 service;
+    private static CoolsmsMsgV4 messageService;
+    private static CoolsmsImgApi imageService;
 
     static String getHeaders() {
         try {
@@ -41,22 +42,34 @@ class APIInit {
     }
 
     static CoolsmsMsgV4 getAPI() {
-        if (retrofit == null) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//            Request 시 로그가 필요하면 추가하세요.
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl("https://rest.coolsms.co.kr/")
-                    .addConverterFactory(ScalarsConverterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build();
-            service = retrofit.create(CoolsmsMsgV4.class);
+        if (messageService == null) {
+            setRetrofit();
+            messageService = retrofit.create(CoolsmsMsgV4.class);
         }
-        return service;
+        return messageService;
+    }
+
+    static CoolsmsImgApi getImageAPI() {
+        if (imageService == null) {
+            setRetrofit();
+            imageService = retrofit.create(CoolsmsImgApi.class);
+        }
+        return imageService;
+    }
+
+    static void setRetrofit() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//        Request 시 로그가 필요하면 추가하세요.
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://rest.coolsms.co.kr/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
     }
 }

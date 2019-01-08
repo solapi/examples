@@ -1,6 +1,6 @@
 import requests
-import configparser
 import json
+import configparser
 import sys
 import os.path
 
@@ -14,10 +14,8 @@ config.read('../config.ini')
 apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
-
 if __name__ == '__main__':
-    # [INPUT_GROUP_ID] 에 그룹 아이디를 넣어주세요
-    # ex) G4V20181005122748TESTTESTTESTTES
-    res = requests.delete(config['SERVER']['URI'] + 'groups/[INPUT_GROUP_ID]',
-                          headers=auth.get_headers(apiKey, apiSecret))
+    # [IMAGE_ID] 에 이미지 아이디를 넣어주세요
+    res = requests.delete(config['SERVER']['IMGURI'] + '/images/[IMAGE_ID]',
+                        headers=auth.get_headers(apiKey, apiSecret))
     print(json.dumps(json.loads(res.text), indent=2, ensure_ascii=False))

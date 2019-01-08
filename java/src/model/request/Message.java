@@ -11,4 +11,12 @@ public class Message {
         this.message.addProperty("text", text);
 //        this.message.addProperty("type", type);
     }
+
+    // 이미지 첨부 전송시 사용 (MMS일 경우)
+    public Message(String to, String from, String text, String imageId) {
+        this.message.addProperty("to", to);
+        this.message.addProperty("from", from);
+        this.message.addProperty("text", text);
+        this.message.addProperty("imageId", imageId);
+    }
 }

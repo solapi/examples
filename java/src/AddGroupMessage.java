@@ -14,6 +14,8 @@ public class AddGroupMessage {
         jsonObject.addProperty("to", "[수신번호를 입력하세요]");
         jsonObject.addProperty("from", "[발신번호를 입력하세요]");
         jsonObject.addProperty("text", "[전송할 문자를 입력하세요]");
+//        MMS 전송 시 아래의 코드를 사용하세요
+//        jsonObject.addProperty("imageId", "[IMAGE_ID를 입력하세요]");
         ArrayList<JsonObject> jsonObjects = new ArrayList<>();
         jsonObjects.add(jsonObject);
         Gson gson = new Gson();
