@@ -4,6 +4,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.IOException;
+
 public class SendMessage {
     public static void main(String[] args) {
         Message message =  new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]");
@@ -24,7 +26,11 @@ public class SendMessage {
                     System.out.println("statusMessage : " + body.getStatusMessage());
                     System.out.println("customFields : " + body.getCustomFields());
                 } else {
-                    System.out.println(response.errorBody().toString());
+                    try {
+                        System.out.println(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
