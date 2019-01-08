@@ -34,7 +34,7 @@ public class SendMessageWithImage {
                 if (response.isSuccessful()) {
                     String imageId = response.body().getImageId();
                     System.out.println("imageId: " + imageId + "\n");
-                    Message message = new Message("01029951047", "01029951047", "[전송할 문자를 입력하세요]", imageId);
+                    Message message = new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]", imageId);
                     Call<MessageModel> sendApi = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
                     sendApi.enqueue(new Callback<MessageModel>() {
                         @Override
