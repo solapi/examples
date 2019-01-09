@@ -12,4 +12,4 @@
 ## 필요한 Library
 ### [/lib/*](https://github.com/KimGenius/coolsms-v4-examples/tree/java/java/lib)
 
-[](./image/lib.png)
+![libimage](./image/lib.png)
