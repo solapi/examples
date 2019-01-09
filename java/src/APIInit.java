@@ -28,7 +28,7 @@ class APIInit {
             String apiKey = ini.get("AUTH", "ApiKey");
             String apiSecret = ini.get("AUTH", "ApiSecret");
             String salt = UUID.randomUUID().toString().replaceAll("-", "");
-            String date = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toString().substring(0, 32);
+            String date = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toString().split("\\[")[0];
 
             Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
             SecretKeySpec secret_key = new SecretKeySpec(apiSecret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
