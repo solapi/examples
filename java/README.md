@@ -11,14 +11,5 @@
 
 ## 필요한 Library
 ### [/lib/*](https://github.com/KimGenius/coolsms-v4-examples/tree/java/java/lib)
-- [ ] commons-codec-1.9
-- [ ] converter-gson-2.4.0
-- [ ] converter-scalars-2.4.0
-- [ ] gson-2.8.5
-- [ ] ini4j-0.5.4
-- [ ] joda-time-2.10
-- [ ] kotlin-stdlib-1.2.71
-- [ ] logging-interceptor-3.11.0
-- [ ] okhttp-3.11.0
-- [ ] okio-2.1.0
-- [ ] retrofit-2.4.0
+
+[](./image/lib.png)
