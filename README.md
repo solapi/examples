@@ -11,7 +11,7 @@
 - [send simple message](/javascript/send_simple_message.js)
 - [send group message](/javascript/send_group_message.js)
 
-#### Java
+#### [Python](./java)
 
 #### [Python](./python)
 
