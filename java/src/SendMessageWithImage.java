@@ -9,6 +9,7 @@ import retrofit2.Response;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 public class SendMessageWithImage {
     public static void main(String[] args) {
@@ -34,7 +35,7 @@ public class SendMessageWithImage {
                 if (response.isSuccessful()) {
                     String imageId = response.body().getImageId();
                     System.out.println("imageId: " + imageId + "\n");
-                    Message message = new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]", imageId);
+                    Message message = new Message("[수신번호를 입력하세요]", "[발신번호를 입력하세요]", "[전송할 문자를 입력하세요]", "[전송할 제목을 입력하세요]", imageId);
                     Call<MessageModel> sendApi = APIInit.getAPI().sendMessage(APIInit.getHeaders(), message);
                     sendApi.enqueue(new Callback<MessageModel>() {
                         @Override
@@ -51,7 +52,11 @@ public class SendMessageWithImage {
                                 System.out.println("statusMessage : " + body.getStatusMessage());
                                 System.out.println("customFields : " + body.getCustomFields());
                             } else {
-                                System.out.println(response.errorBody());
+                                try {
+                                    System.out.println(response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
 
