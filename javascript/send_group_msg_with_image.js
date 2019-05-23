@@ -1,4 +1,4 @@
-const { config, Group, Image } = require('solapi-sdk-v4')
+const { config, Group, Image } = require('solapi')
 const conf = require('../config')
 const fs = require('fs')
 
@@ -38,7 +38,6 @@ async function send(message) {
       type: 'MMS',
       subject: 'javascript image test'
     }
-    console.log(body)
     const group = new Group()
     await group.createGroup()
     await group.addGroupMessage(body)
