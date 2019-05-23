@@ -1,10 +1,10 @@
-const { config, Group, Image } = require('coolsms-sdk-v4')
+const { config, Group, Image } = require('solapi-sdk-v4')
 const conf = require('../config')
 const axios = require('axios')
 const fs = require('fs')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  send simple messages
 */
 

@@ -1,8 +1,8 @@
-const { config, Group } = require('coolsms-sdk-v4')
+const { config, Group } = require('solapi')
 const conf = require('../config')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  add group messages
 */
 
@@ -20,7 +20,7 @@ async function addGroupMessage (message) {
   try {
     const group = new Group()
     await group.createGroup()
-    await group.addGroupMessage(message)
+    console.log(await group.addGroupMessage(message))
   } catch (e) {
     console.log(e)
   }

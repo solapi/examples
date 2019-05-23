@@ -1,8 +1,8 @@
-const { config, Group } = require('coolsms-sdk-v4')
+const { config, Group } = require('solapi-sdk-v4')
 const conf = require('../config')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  delete group
 */
 
