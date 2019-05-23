@@ -1,4 +1,4 @@
-const { config, Group } = require('solapi-sdk-v4')
+const { config, Group } = require('solapi')
 const conf = require('../config')
 
 /*
@@ -20,8 +20,8 @@ async function send (message) {
   try {
     const group = new Group()
     await group.createGroup()
-    await group.addGroupMessage(message)
-    await group.deleteGroupMessages()
+    const { resultList } = await group.addGroupMessage(message)
+    console.log(await group.deleteGroupMessages(resultList[0].messageId))
   } catch (e) {
     console.log(e)
   }
