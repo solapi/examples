@@ -1,4 +1,4 @@
-const { config, Group } = require('solapi-sdk-v4')
+const { config, Group } = require('solapi')
 const conf = require('../config')
 
 /*
