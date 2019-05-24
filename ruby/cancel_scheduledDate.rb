@@ -6,11 +6,11 @@ require 'securerandom'
 require 'date'
 
 #
-# coolsms-message-v4 ruby 
+# solapi ruby
 # cancel scheduledDate
-# 
+#
 
-file = File.read './config.json'
+file = File.read '../config.json'
 $config = JSON.parse(file)
 
 def get_header
@@ -25,7 +25,7 @@ end
 def create_group
     header = get_header
     # puts 'header : ' + header
-    uri = URI('https://rest.coolsms.co.kr/messages/v4/groups')
+    uri = URI('https://api.solapi.com/messages/v4/groups')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
@@ -42,7 +42,7 @@ end
 
 def add_message(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/messages")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}/messages")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Put.new(uri.path, 'Content-Type' => 'application/json')
@@ -64,7 +64,7 @@ end
 
 def add_scheduledDate(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/schedule")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}/schedule")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
@@ -83,7 +83,7 @@ end
 
 def cancel_scheduledDate(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/schedule")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}/schedule")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Delete.new(uri.path, 'Content-Type' => 'application/json')

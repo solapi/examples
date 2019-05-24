@@ -5,11 +5,11 @@ require 'json'
 require 'securerandom'
 
 #
-# coolsms-message-v4 ruby 
+# solapi ruby
 # send group message
-# 
+#
 
-file = File.read './config.json'
+file = File.read '../config.json'
 $config = JSON.parse(file)
 
 def get_header
@@ -24,7 +24,7 @@ end
 def create_group
     header = get_header
     # puts 'header : ' + header
-    uri = URI('https://rest.coolsms.co.kr/messages/v4/groups')
+    uri = URI('https://api.solapi.com/messages/v4/groups')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
@@ -40,12 +40,12 @@ rescue => e
 end
 
 def create_image
-    imageFile = open('ruby/testImage.jpg').to_a.join
+    imageFile = open('testImage.jpg').to_a.join
     imageData = Base64.strict_encode64(imageFile)
     puts imageData
     header = get_header
     # puts 'header : ' + header
-    uri = URI('https://rest.coolsms.co.kr/images/v4/images')
+    uri = URI('https://api.solapi.com/images/v4/images')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
@@ -65,7 +65,7 @@ def add_message(groupId)
     imageId = create_image()
     puts imageId
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/messages")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}/messages")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Put.new(uri.path, 'Content-Type' => 'application/json')
@@ -89,7 +89,7 @@ end
 
 def send_message(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}/send")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}/send")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
