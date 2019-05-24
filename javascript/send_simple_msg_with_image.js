@@ -1,10 +1,10 @@
-const { config, Group, Image } = require('coolsms-sdk-v4')
+const { config, Group, Image } = require('solapi')
 const conf = require('../config')
 const axios = require('axios')
 const fs = require('fs')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  send simple messages
 */
 
@@ -39,7 +39,6 @@ async function send(message, agent = {}) {
       type: 'MMS',
       subject: 'javascript image test'
     }
-    console.log(body)
     console.log(await Group.sendSimpleMessage(body, agent))
   } catch (e) {
     console.log(e)

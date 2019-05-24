@@ -5,11 +5,11 @@ require 'json'
 require 'securerandom'
 
 #
-# coolsms-message-v4 ruby 
+# solapi ruby
 # send group message
-# 
+#
 
-file = File.read './config.json'
+file = File.read '../config.json'
 $config = JSON.parse(file)
 
 def get_header
@@ -24,7 +24,7 @@ end
 def create_group
     header = get_header
     # puts 'header : ' + header
-    uri = URI('https://rest.coolsms.co.kr/messages/v4/groups')
+    uri = URI('https://api.solapi.com/messages/v4/groups')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
@@ -41,7 +41,7 @@ end
 
 def get_group_info(groupId)
     header = get_header
-    uri = URI("https://rest.coolsms.co.kr/messages/v4/groups/#{groupId}")
+    uri = URI("https://api.solapi.com/messages/v4/groups/#{groupId}")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Get.new(uri.path, 'Content-Type' => 'application/json')

@@ -1,14 +1,14 @@
 <?php
 /*
- coolsms-message-v4 php example
+ solapi php example
  send group messages
 */
-$configFile = file_get_contents("./config.json");
+$configFile = file_get_contents("../config.json");
 $config = json_decode($configFile, true);
 
 function get_header() {
   global $config;
-  # apiKey && apiSecret are acquired from coolsms.co.kr/credentials
+  # apiKey && apiSecret are acquired from solapi.com/credentials
   $apiKey = $config["apiKey"];
   $apiSecret = $config["apiSecret"];
   date_default_timezone_set('Asia/Seoul');
@@ -19,7 +19,7 @@ function get_header() {
 }
 
 function create_group() {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups";
+  $url = "https://api.solapi.com/messages/v4/groups";
   $result = request("POST", $url);
   $groupId = json_decode($result)->groupId;
   print_r("GroupID : {$groupId}\n");
@@ -28,14 +28,14 @@ function create_group() {
 
 // 이미지 생성
 function createImage () {
-  $path = 'php/testImage.jpg';
+  $path = './testImage.jpg';
   $type = pathinfo($path, PATHINFO_EXTENSION);
   echo $type;
   $data = file_get_contents($path);
   $imageData = base64_encode($data);
 
   // image API 에서 이미지 생성
-  $url = "https://rest.coolsms.co.kr/images/v4/images";
+  $url = "https://api.solapi.com/images/v4/images";
   $fields = new stdClass();
   $fields->image = $imageData;
   $result = request("POST", $url, $fields);
@@ -51,7 +51,7 @@ function add_message($groupId) {
   $fields = new stdClass();
   $message = new stdClass();
   $message->text = $config["text"] . " from PHP";
-  // 타입 변경 
+  // 타입 변경
   $message->type = 'MMS';
   $message->to = $config["to"];
   $message->from = $config["from"];
@@ -60,14 +60,14 @@ function add_message($groupId) {
   $message->imageId = createImage();
   print_r($message);
   $fields->messages = json_encode(array($message));
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/messages";
+  $url = "https://api.solapi.com/messages/v4/groups/{$groupId}/messages";
   $result = request("PUT", $url, $fields);
   print_r("{$result}\n");
 }
 
 // 문자 발송
 function send_message($groupId) {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/send";
+  $url = "https://api.solapi.com/messages/v4/groups/{$groupId}/send";
   $result = request("POST", $url);
   print_r("Group msg send : {$result}\n");
 }

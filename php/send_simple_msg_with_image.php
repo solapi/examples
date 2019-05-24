@@ -1,15 +1,15 @@
 <?php
 /*
- * coolsms-message-v4 php example
+ * solapi php example
  * send simple messages
  */
-$configFile = file_get_contents("./config.json");
+$configFile = file_get_contents("../config.json");
 $config = json_decode($configFile, true);
 
 // 인증 생성
 function getAuthHeader () {
   global $config;
-  // apiKey && apiSecret are acquired from coolsms.co.kr/credentials
+  // apiKey && apiSecret are acquired from solapi.com/credentials
   $apiKey = $config["apiKey"];
   $apiSecret = $config["apiSecret"];
 
@@ -24,13 +24,13 @@ function getAuthHeader () {
 function createImage () {
   global $config;
 
-  $path = 'php/testImage.jpg';
+  $path = './testImage.jpg';
   $type = pathinfo($path, PATHINFO_EXTENSION);
   echo $type;
   $data = file_get_contents($path);
   $imageData = base64_encode($data);
 
-  $url = "https://rest.coolsms.co.kr/images/v4/images";
+  $url = "https://api.solapi.com/images/v4/images";
   $fields = new stdClass();
   $fields->image = $imageData;
   $fields_string = json_encode($fields);
@@ -42,7 +42,7 @@ function createImage () {
   curl_setopt($ch, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
   curl_setopt($ch, CURLOPT_POST, count($fields));
   curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-  curl_setopt($ch,CURLOPT_RETURNTRANSFER, true); 
+  curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
   $result = curl_exec($ch);
   $parseResult = json_decode($result, true);
@@ -54,11 +54,11 @@ function createImage () {
 function send ($imageId) {
   global $config;
 
-  $url = "https://rest.coolsms.co.kr/messages/v4/send";
+  $url = "https://api.solapi.com/messages/v4/send";
   $fields = new stdClass();
   $message = new stdClass();
   $message->text = $config["text"] . " from PHP";
-  // 타입 변경 
+  // 타입 변경
   $message->type = 'MMS';
   $message->to = $config["to"];
   $message->from = $config["from"];
@@ -75,7 +75,7 @@ function send ($imageId) {
   curl_setopt($ch, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
   curl_setopt($ch, CURLOPT_POST, count($fields));
   curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-  curl_setopt($ch,CURLOPT_RETURNTRANSFER, true); 
+  curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
   $result = curl_exec($ch);
   echo $result;

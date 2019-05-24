@@ -5,8 +5,8 @@ import retrofit2.http.*;
 
 import java.util.ArrayList;
 
-// 문서 : https://docs.coolsms.co.kr/rest-api-reference/image-api
-public interface CoolsmsImgApi {
+// 문서 : https://docs.solapi.com/rest-api-reference/image-api
+public interface SolapiImgApi {
     // 이미지 등록
     @POST("/images/v4/images")
     Call<ImageResult> createImage(@Header("Authorization") String auth,

@@ -1,9 +1,9 @@
 const moment = require('moment-timezone')
-const { config, Group } = require('coolsms-sdk-v4')
+const { config, Group } = require('solapi')
 const conf = require('../config')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  cancel scheduledDate
 */
 
@@ -24,7 +24,7 @@ async function send (message) {
     await group.addGroupMessage(message)
     const scheduledDate = moment().tz('Asia/Seoul').add(1, 'days').format('YYYY-MM-DD H:m:s')
     await group.setScheduledDate(scheduledDate)
-    await group.cancelScheduled()
+    console.log(await group.cancelScheduled())
   } catch (e) {
     console.log(e)
   }

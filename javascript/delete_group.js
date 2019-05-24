@@ -1,8 +1,8 @@
-const { config, Group } = require('coolsms-sdk-v4')
+const { config, Group } = require('solapi')
 const conf = require('../config')
 
 /*
- coolsms-message-v4 js example
+ solapi js example
  delete group
 */
 
@@ -16,7 +16,7 @@ async function deleteGroup () {
     const group = new Group()
     await group.createGroup()
     const groupId = group.getGroupId()
-    await Group.deleteGroup(groupId)
+    console.log(await Group.deleteGroup(groupId))
   } catch (e) {
     console.log(e)
   }

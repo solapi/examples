@@ -10,7 +10,7 @@ sys.path.append(os.path.split(libdir)[0])
 from auth import auth
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
+config.read('config.ini')
 apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 

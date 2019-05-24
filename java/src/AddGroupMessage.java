@@ -25,20 +25,23 @@ public class AddGroupMessage {
         api.enqueue(new Callback<AddMessageListModel>() {
             @Override
             public void onResponse(Call<AddMessageListModel> call, Response<AddMessageListModel> response) {
-                System.out.println(response.code());
                 AddMessageListModel body = response.body();
-                System.out.println("errorCount : " + body.getErrorCount());
-                for (MessageModel message : body.getResultList()) {
-                    System.out.println("groupId : " + message.getGroupId());
-                    System.out.println("messageId : " + message.getMessageId());
-                    System.out.println("to : " + message.getTo());
-                    System.out.println("from : " + message.getFrom());
-                    System.out.println("type : " + message.getType());
-                    System.out.println("statusCode : " + message.getStatusCode());
-                    System.out.println("statusMessage : " + message.getStatusMessage());
-                    System.out.println("customFields : " + message.getCustomFields());
-                    System.out.println("country : " + message.getCountry());
-                    System.out.println("accountId : " + message.getAccountId());
+                try {
+                    System.out.println("errorCount : " + body.getErrorCount());
+                    for (MessageModel message : body.getResultList()) {
+                        System.out.println("groupId : " + message.getGroupId());
+                        System.out.println("messageId : " + message.getMessageId());
+                        System.out.println("to : " + message.getTo());
+                        System.out.println("from : " + message.getFrom());
+                        System.out.println("type : " + message.getType());
+                        System.out.println("statusCode : " + message.getStatusCode());
+                        System.out.println("statusMessage : " + message.getStatusMessage());
+                        System.out.println("customFields : " + message.getCustomFields());
+                        System.out.println("country : " + message.getCountry());
+                        System.out.println("accountId : " + message.getAccountId());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
