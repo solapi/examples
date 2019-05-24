@@ -1,14 +1,14 @@
 <?php
 /*
- coolsms-message-v4 php example
+ solapi php example
  create group
 */
-$configFile = file_get_contents("./config.json");
+$configFile = file_get_contents("../config.json");
 $config = json_decode($configFile, true);
 
 function get_header() {
   global $config;
-  # apiKey && apiSecret are acquired from coolsms.co.kr/credentials
+  # apiKey && apiSecret are acquired from solapi.com/credentials
   $apiKey = $config["apiKey"];
   $apiSecret = $config["apiSecret"];
   date_default_timezone_set('Asia/Seoul');
@@ -19,7 +19,7 @@ function get_header() {
 }
 
 function create_group() {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups";
+  $url = "https://api.solapi.com/messages/v4/groups";
   $result = request("POST", $url);
   $groupId = json_decode($result)->groupId;
   print_r("GroupID : {$groupId}\n");

@@ -1,14 +1,14 @@
 <?php
 /*
- coolsms-message-v4 php example
+ solapi php example
  send group messages
 */
-$configFile = file_get_contents("./config.json");
+$configFile = file_get_contents("../config.json");
 $config = json_decode($configFile, true);
 
 function get_header() {
   global $config;
-  # apiKey && apiSecret are acquired from coolsms.co.kr/credentials
+  # apiKey && apiSecret are acquired from solapi.com/credentials
   $apiKey = $config["apiKey"];
   $apiSecret = $config["apiSecret"];
   date_default_timezone_set('Asia/Seoul');
@@ -19,7 +19,7 @@ function get_header() {
 }
 
 function create_group() {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups";
+  $url = "https://api.solapi.com/messages/v4/groups";
   $result = request("POST", $url);
   $groupId = json_decode($result)->groupId;
   print_r("GroupID : {$groupId}\n");
@@ -35,13 +35,13 @@ function add_message($groupId) {
   $message->to = $config["to"];
   $message->from = $config["from"];
   $fields->messages = json_encode(array($message));
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/messages";
+  $url = "https://api.solapi.com/messages/v4/groups/{$groupId}/messages";
   $result = request("PUT", $url, $fields);
   print_r("Group msg add : {$result}\n");
 }
 
 function send_message($groupId) {
-  $url = "https://rest.coolsms.co.kr/messages/v4/groups/{$groupId}/send";
+  $url = "https://api.solapi.com/messages/v4/groups/{$groupId}/send";
   $result = request("POST", $url);
   print_r("Group msg send : {$result}\n");
 }
