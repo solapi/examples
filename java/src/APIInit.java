@@ -19,8 +19,8 @@ import java.util.UUID;
 
 class APIInit {
     private static Retrofit retrofit;
-    private static CoolsmsMsgV4 messageService;
-    private static CoolsmsImgApi imageService;
+    private static SolapiMsgV4 messageService;
+    private static SolapiImgApi imageService;
 
     static String getHeaders() {
         try {
@@ -41,18 +41,18 @@ class APIInit {
         return null;
     }
 
-    static CoolsmsMsgV4 getAPI() {
+    static SolapiMsgV4 getAPI() {
         if (messageService == null) {
             setRetrofit();
-            messageService = retrofit.create(CoolsmsMsgV4.class);
+            messageService = retrofit.create(SolapiMsgV4.class);
         }
         return messageService;
     }
 
-    static CoolsmsImgApi getImageAPI() {
+    static SolapiImgApi getImageAPI() {
         if (imageService == null) {
             setRetrofit();
-            imageService = retrofit.create(CoolsmsImgApi.class);
+            imageService = retrofit.create(SolapiImgApi.class);
         }
         return imageService;
     }
@@ -66,7 +66,7 @@ class APIInit {
                 .addInterceptor(interceptor)
                 .build();
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://rest.coolsms.co.kr/")
+                .baseUrl("https://api.solapi.com/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
