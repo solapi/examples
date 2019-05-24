@@ -3,6 +3,6 @@
   "apiSecret": "",
   "to": "",
   "from": "",
-  "text": "Hello Coolsms",
+  "text": "Hello Solapi",
   "type": "SMS"
 }
