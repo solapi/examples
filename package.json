@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "solapi": "^4.0.11",
-    "moment-timezone": "^0.5.21"
+    "crypto": "^1.0.1",
+    "crypto-random-string": "^3.0.1",
+    "moment-timezone": "^0.5.26",
+    "solapi": "^4.0.11"
   }
 }
