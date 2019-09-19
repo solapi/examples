@@ -19,7 +19,6 @@ public class GetMessageGroupInfo {
                 System.out.println("count : " + body.getCount());
                 System.out.println("log : " + body.getLog());
                 System.out.println("status : " + body.getStatus());
-                System.out.println("scheduledDate : " + body.getScheduledDate());
                 System.out.println("accountId : " + body.getAccountId());
                 System.out.println("apiVersion : " + body.getApiVersion());
                 System.out.println("groupId : " + body.getGroupId());

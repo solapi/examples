@@ -1,7 +1,6 @@
 import model.request.MessageIds;
 import model.request.Message;
 import model.request.MessageList;
-import model.request.ScheduleDate;
 import model.response.*;
 import model.response.GetMessageListModel;
 import okhttp3.ResponseBody;
@@ -43,17 +42,6 @@ public interface SolapiMsgV4 {
     @POST("/messages/v4/groups/{groupId}/send")
     Call<ResponseBody> sendGroupMessage(@Header("Authorization") String auth,
                                         @Path("groupId") String groupId);
-
-    // 그룹 메시지 - 그룹 메시지 예약 접수
-    @POST("/messages/v4/groups/{groupId}/schedule")
-    Call<ResponseBody> scheduleGroupMessage(@Header("Authorization") String auth,
-                                            @Path("groupId") String groupId,
-                                            @Body ScheduleDate scheduleDate);
-
-    // 그룹 메시지 - 그룹 메시지 예약 취소
-    @DELETE("/messages/v4/groups/{groupId}/schedule")
-    Call<ResponseBody> cancelScheduledGroupMessage(@Header("Authorization") String auth,
-                                                   @Path("groupId") String groupId);
 
     // 그룹 메시지 - 그룹 메시지 삭제
     @HTTP(method = "DELETE", path = "/messages/v4/groups/{groupId}/messages", hasBody = true)
