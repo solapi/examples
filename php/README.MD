@@ -7,5 +7,3 @@
 - [delete group](/php/delete_group.php)
 - [get group messages](/php/get_group_messages.php)
 - [delete group messages](/php/delete_group_messages.php)
-- [add scheduledDate](/php/add_scheduledDate.php)
-- [cancel scheduledDate](/php/cancel_scheduledDate.php)

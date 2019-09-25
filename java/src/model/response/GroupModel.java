@@ -8,7 +8,6 @@ public class GroupModel {
     private ArrayList<JsonObject> log;
     private JsonObject agent;
     private JsonObject count;
-    private String scheduledDate;
     private String accountId;
     private String apiVersion;
     private String groupId;
@@ -27,10 +26,6 @@ public class GroupModel {
 
     public JsonObject getCount() {
         return count;
-    }
-
-    public String getScheduledDate() {
-        return scheduledDate;
     }
 
     public String getAccountId() {

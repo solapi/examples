@@ -20,7 +20,6 @@ public class GetGroups {
                     System.out.println("log : " + group.getLog());
                     System.out.println("agent : " + group.getAgent());
                     System.out.println("count : " + group.getCount());
-                    System.out.println("scheduledDate : " + group.getScheduledDate());
                     System.out.println("accountId : " + group.getAccountId());
                     System.out.println("apiVersion : " + group.getApiVersion());
                     System.out.println("groupId : " + group.getGroupId());
