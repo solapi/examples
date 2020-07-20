@@ -45,16 +45,17 @@ def create_image
     puts imageData
     header = get_header
     # puts 'header : ' + header
-    uri = URI('https://api.solapi.com/images/v4/images')
+    uri = URI('https://api.solapi.com/storage/v1/files')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
     req.add_field('Authorization', header)
     req.body = {
-      image: imageData
+      file: imageData,
+      type: 'MMS'
     }.to_json
     res = http.request(req)
-    return JSON.parse(res.body)["imageId"]
+    return JSON.parse(res.body)["fileId"]
 rescue => e
     puts 'failed'
     puts e

@@ -15,6 +15,5 @@ apiKey = config['AUTH']['ApiKey']
 apiSecret = config['AUTH']['ApiSecret']
 
 if __name__ == '__main__':
-    res = requests.get(config['SERVER']['IMGURI'] + '/images',
-                        headers=auth.get_headers(apiKey, apiSecret))
+    res = requests.get(config['SERVER']['IMGURI'] + 'files', headers=auth.get_headers(apiKey, apiSecret))
     print(json.dumps(json.loads(res.text), indent=2, ensure_ascii=False))
