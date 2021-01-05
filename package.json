@@ -9,7 +9,7 @@
   "author": "BillyKang",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "crypto": "^1.0.1",
     "crypto-random-string": "^3.0.1",
     "moment-timezone": "^0.5.26",
